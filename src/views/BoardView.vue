@@ -376,7 +376,7 @@ function confirmArchive() {
             :class="{ disabled: readonly }"
             @click="addAssetToCanvas(a)"
           >
-            <div class="thumb" :style="{ backgroundImage: `url(${a.thumbnailUrl})` }" />
+            <div class="thumb" :style='{ backgroundImage: `url("${a.thumbnailUrl}")` }' />
             <div class="a-meta">
               <b>{{ a.type === 'output' ? a.modelName : '参考图' }}</b>
               <small class="font-mono">{{ a.type.toUpperCase() }} · {{ a.creatorName }}</small>
@@ -476,7 +476,7 @@ function confirmArchive() {
     <n-modal v-model:show="showPicker" preset="card" title="选择素材绑定到设计稿节点" style="max-width: 600px">
       <div v-if="assets.length" class="picker-grid">
         <div v-for="a in assets" :key="a.id" class="picker-item" @click="bindAsset(a)">
-          <div class="p-thumb" :style="{ backgroundImage: `url(${a.thumbnailUrl})` }" />
+          <div class="p-thumb" :style='{ backgroundImage: `url("${a.thumbnailUrl}")` }' />
           <small class="font-mono">{{ a.type === 'output' ? a.modelName : '参考图' }} · {{ a.type.toUpperCase() }}</small>
         </div>
       </div>

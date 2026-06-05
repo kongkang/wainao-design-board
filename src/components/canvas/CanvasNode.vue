@@ -38,7 +38,7 @@ function onText(e: Event) {
 
     <template v-if="type === 'input' || type === 'output'">
       <div v-if="data.pending" class="pic pending"><span class="spin" />生成中…</div>
-      <div v-else-if="data.asset" class="pic" :style="{ backgroundImage: `url(${data.asset.thumbnailUrl})` }" />
+      <div v-else-if="data.asset" class="pic" :style='{ backgroundImage: `url("${data.asset.thumbnailUrl}")` }' />
       <button v-else-if="!data.readonly" class="pic pick" @click="data.onPick?.()" @mousedown.stop>＋ 选择素材</button>
       <div v-else class="pic empty" />
       <div class="txt">

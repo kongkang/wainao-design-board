@@ -60,7 +60,7 @@ const STATUS: Record<string, { t: string; c: string }> = {
           <tbody>
             <tr v-for="m in members" :key="m.userId">
               <td>
-                <span class="who"><span class="av" :style="{ backgroundImage: `url(${m.avatarUrl})` }" />{{ m.displayName }}</span>
+                <span class="who"><span class="av" :style='{ backgroundImage: `url("${m.avatarUrl}")` }' />{{ m.displayName }}</span>
               </td>
               <td class="font-mono">{{ m.phone }}</td>
               <td><span class="tag" :class="m.role === 'admin' ? 'info' : 'ok'">{{ m.role === 'admin' ? '管理员' : '设计师' }}</span></td>
@@ -80,7 +80,7 @@ const STATUS: Record<string, { t: string; c: string }> = {
         <n-spin :show="detailLoading">
           <div v-if="detail" class="detail">
             <div class="d-head">
-              <div class="d-av" :style="{ backgroundImage: `url(${detail.avatarUrl})` }" />
+              <div class="d-av" :style='{ backgroundImage: `url("${detail.avatarUrl}")` }' />
               <div>
                 <h2 class="font-display">{{ detail.displayName }}</h2>
                 <span class="tag" :class="detail.role === 'admin' ? 'info' : 'ok'">{{ detail.role === 'admin' ? '管理员' : '设计师' }}</span>

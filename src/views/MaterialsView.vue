@@ -104,7 +104,7 @@ function enterProject(a: Asset) {
     <n-spin :show="loading">
       <div v-if="assets.length" class="grid">
         <div v-for="a in assets" :key="a.id" class="m-card">
-          <div class="thumb" :style="{ backgroundImage: `url(${a.thumbnailUrl})` }" @click="openDetail(a)">
+          <div class="thumb" :style='{ backgroundImage: `url("${a.thumbnailUrl}")` }' @click="openDetail(a)">
             <span class="type-badge" :class="a.type">{{ a.type === 'output' ? 'OUTPUT' : 'INPUT' }}</span>
           </div>
           <div class="m-body">
@@ -122,7 +122,7 @@ function enterProject(a: Asset) {
 
     <n-drawer v-model:show="showDrawer" :width="440">
       <n-drawer-content v-if="detail" title="素材详情" closable>
-        <div class="d-preview" :style="{ backgroundImage: `url(${detail.url})` }" />
+        <div class="d-preview" :style='{ backgroundImage: `url("${detail.url}")` }' />
         <div class="field"><label>类型</label><div><span class="tag" :class="detail.type === 'output' ? 'ok' : 'info'">{{ detail.type === 'output' ? 'Output 图' : 'Input 图' }}</span></div></div>
         <div class="field"><label>所属项目</label><div>{{ detail.projectName }}</div></div>
         <div class="field"><label>创建人 / 时间</label><div>{{ detail.creatorName }} · {{ relativeTime(detail.createdAt) }}</div></div>
@@ -132,7 +132,7 @@ function enterProject(a: Asset) {
           <div v-if="relatedInputs.length" class="field">
             <label>关联 Input</label>
             <div class="rel-inputs">
-              <div v-for="r in relatedInputs" :key="r.id" class="rel" :style="{ backgroundImage: `url(${r.thumbnailUrl})` }" />
+              <div v-for="r in relatedInputs" :key="r.id" class="rel" :style='{ backgroundImage: `url("${r.thumbnailUrl}")` }' />
             </div>
           </div>
           <div class="field"><label>来源记录</label><div class="font-mono muted">{{ detail.sourceRef }}</div></div>

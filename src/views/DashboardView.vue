@@ -91,7 +91,7 @@ const STATUS: Record<string, { t: string; c: string }> = {
             <tbody>
               <tr v-for="m in activity" :key="m.userId">
                 <td>
-                  <span class="who"><span class="av" :style="{ backgroundImage: `url(${m.avatarUrl})` }" />{{ m.displayName }}</span>
+                  <span class="who"><span class="av" :style='{ backgroundImage: `url("${m.avatarUrl}")` }' />{{ m.displayName }}</span>
                 </td>
                 <td class="num font-mono">{{ m.monthlyGenerations }}</td>
                 <td><span class="tag" :class="STATUS[m.activityStatus].c">{{ STATUS[m.activityStatus].t }}</span></td>
