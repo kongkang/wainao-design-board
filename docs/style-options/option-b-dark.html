@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>bebehaha 工作台 · 风格 B「暗房质感」</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0C10; --bg2:#101218; --panel:#15171E; --panel2:#1A1D26;
+  --ink:#ECEEF3; --ink2:#A7AEBD; --muted:#697084;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --acid:#C8FB4F; --acid-d:#A6E22E; --acid-soft:rgba(200,251,79,.12);
+  --cyan:#63E6CE; --warm:#FF7A4D; --warm-soft:rgba(255,122,77,.14);
+  --font-display:'Syne',system-ui,'PingFang SC',sans-serif;
+  --font-body:'Hanken Grotesk',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',monospace;
+  --glow:0 0 0 1px rgba(200,251,79,.45), 0 0 22px rgba(200,251,79,.18);
+  --sh:0 2px 8px rgba(0,0,0,.4), 0 18px 50px rgba(0,0,0,.5);
+  --r:18px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased; font-size:14px; line-height:1.5; position:relative;
+}
+body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(60% 38% at 78% -4%, rgba(200,251,79,.10), transparent 70%),
+    radial-gradient(48% 34% at 8% 4%, rgba(99,230,206,.07), transparent 70%);}
+body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
+.app{display:grid; grid-template-columns:248px 1fr; min-height:100vh; position:relative; z-index:1}
+/* sidebar */
+.side{background:linear-gradient(180deg,#13151C,#0E1015); border-right:1px solid var(--line); padding:22px 16px; display:flex; flex-direction:column; gap:6px; position:sticky; top:0; height:100vh}
+.brand{display:flex; align-items:center; gap:11px; padding:6px 8px 20px}
+.brand .mark{width:38px; height:38px; border-radius:11px; flex:none; background:linear-gradient(135deg,var(--acid),var(--acid-d)); position:relative; box-shadow:0 0 20px rgba(200,251,79,.4)}
+.brand .mark::after{content:""; position:absolute; inset:9px; border-radius:5px; background:radial-gradient(circle at 32% 30%, rgba(11,12,16,.9), rgba(11,12,16,.35))}
+.brand b{font-family:var(--font-display); font-weight:700; font-size:18px; letter-spacing:-.02em; line-height:1.1}
+.brand span{display:block; font-family:var(--font-mono); font-size:10px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase}
+.nav-label{font-family:var(--font-mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); padding:14px 10px 6px}
+.nav a{display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:12px; color:var(--ink2); font-weight:600; cursor:pointer; text-decoration:none; position:relative; transition:.15s}
+.nav a .ic{width:18px; height:18px; flex:none; opacity:.65}
+.nav a:hover{background:var(--panel2); color:var(--ink)}
+.nav a.on{background:var(--acid-soft); color:var(--acid)}
+.nav a.on .ic{opacity:1}
+.nav a.on::before{content:""; position:absolute; left:-16px; top:9px; bottom:9px; width:3px; border-radius:0 3px 3px 0; background:var(--acid); box-shadow:0 0 10px var(--acid)}
+.nav a .badge{margin-left:auto; font-family:var(--font-mono); font-size:11px; background:var(--panel2); border:1px solid var(--line); border-radius:7px; padding:1px 7px; color:var(--ink2)}
+.side .foot{margin-top:auto; padding:12px 10px; border-top:1px solid var(--line); display:flex; align-items:center; gap:10px}
+.avatar{width:34px; height:34px; border-radius:50%; flex:none; background:linear-gradient(135deg,var(--warm),#FFB070); display:grid; place-items:center; color:#1a1208; font-weight:800; font-size:13px}
+.foot small{display:block; color:var(--muted); font-size:11px}
+/* main */
+.main{min-width:0; display:flex; flex-direction:column}
+.topbar{height:68px; display:flex; align-items:center; gap:16px; padding:0 30px; border-bottom:1px solid var(--line); background:rgba(11,12,16,.7); backdrop-filter:blur(10px); position:sticky; top:0; z-index:5}
+.pagetabs{display:flex; gap:4px; background:var(--panel); padding:4px; border-radius:12px; border:1px solid var(--line)}
+.pagetabs button{font-family:var(--font-body); font-weight:700; font-size:13px; border:0; background:transparent; color:var(--muted); padding:8px 16px; border-radius:9px; cursor:pointer}
+.pagetabs button.on{background:var(--acid); color:#10130a; box-shadow:0 0 16px rgba(200,251,79,.35)}
+.search{margin-left:8px; flex:1; max-width:340px; display:flex; align-items:center; gap:9px; background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:9px 13px; color:var(--muted)}
+.search input{border:0; outline:0; font:inherit; flex:1; color:var(--ink); background:transparent}
+.role-pill{margin-left:auto; display:inline-flex; padding:4px; background:var(--panel); border:1px solid var(--line); border-radius:10px}
+.role-pill button{font-family:var(--font-mono); font-size:11px; border:0; background:transparent; color:var(--muted); padding:6px 12px; border-radius:7px; cursor:pointer; letter-spacing:.04em}
+.role-pill button.on{background:var(--ink); color:var(--bg)}
+.content{padding:30px; max-width:1320px; width:100%}
+.page{display:none; animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+.page.on{display:block}
+@keyframes rise{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+.head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:26px}
+.head h1{font-family:var(--font-display); font-weight:700; font-size:32px; letter-spacing:-.02em; margin:0 0 6px}
+.head p{color:var(--muted); margin:0; font-size:13.5px}
+.btn{font-family:var(--font-body); font-weight:700; font-size:13px; border:1px solid var(--line2); background:var(--panel2); color:var(--ink); padding:11px 16px; border-radius:11px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; transition:.13s}
+.btn:hover{border-color:var(--ink2); transform:translateY(-1px)}
+.btn.pri{background:var(--acid); border-color:var(--acid-d); color:#10130a; box-shadow:0 0 18px rgba(200,251,79,.3)}
+.btn.pri:hover{box-shadow:0 0 26px rgba(200,251,79,.45)}
+.btn.acc{background:var(--warm); border-color:#E05F33; color:#1a1208}
+.grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+.metric{background:linear-gradient(180deg,var(--panel),var(--bg2)); border:1px solid var(--line); border-radius:var(--r); padding:20px; position:relative; overflow:hidden}
+.metric::after{content:""; position:absolute; right:-30px; top:-30px; width:96px; height:96px; border-radius:50%; background:radial-gradient(circle, rgba(200,251,79,.16), transparent 70%)}
+.metric .k{position:relative; font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:8px}
+.metric .dot{width:7px; height:7px; border-radius:50%; background:var(--acid); box-shadow:0 0 8px var(--acid)}
+.metric .v{position:relative; font-family:var(--font-display); font-weight:700; font-size:42px; line-height:1; margin:14px 0 8px; letter-spacing:-.02em}
+.metric .t{position:relative; font-size:12px; color:var(--muted)}
+.metric .t b{color:var(--acid-d); font-family:var(--font-mono); font-weight:700}
+.metric.cy::after{background:radial-gradient(circle, rgba(99,230,206,.16), transparent 70%)} .metric.cy .dot{background:var(--cyan); box-shadow:0 0 8px var(--cyan)}
+.metric.wm::after{background:radial-gradient(circle, rgba(255,122,77,.16), transparent 70%)} .metric.wm .dot{background:var(--warm); box-shadow:0 0 8px var(--warm)} .metric.wm .t b{color:var(--warm)}
+.cols{display:grid; grid-template-columns:1.5fr 1fr; gap:16px; margin-top:16px}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); overflow:hidden}
+.card-h{padding:17px 20px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line)}
+.card-h h3{margin:0; font-family:var(--font-display); font-weight:700; font-size:17px; letter-spacing:-.01em}
+.card-h a{font-family:var(--font-mono); font-size:11px; color:var(--acid); text-decoration:none; letter-spacing:.04em}
+table{width:100%; border-collapse:collapse}
+th{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:12px 20px; font-weight:500; background:rgba(255,255,255,.02)}
+td{padding:14px 20px; border-top:1px solid var(--line); font-size:13px; vertical-align:middle}
+td.num{font-family:var(--font-mono); font-weight:700; color:var(--acid)}
+tr:hover td{background:rgba(255,255,255,.022)}
+.who{display:flex; align-items:center; gap:10px}
+.who .av{width:28px; height:28px; border-radius:8px; flex:none; display:grid; place-items:center; font-weight:800; font-size:11px; color:#10130a}
+.tag{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; font-weight:700; padding:4px 9px; border-radius:8px; letter-spacing:.02em}
+.tag::before{content:""; width:6px; height:6px; border-radius:50%}
+.tag.grn{background:var(--acid-soft); color:var(--acid)} .tag.grn::before{background:var(--acid); box-shadow:0 0 6px var(--acid)}
+.tag.amb{background:var(--warm-soft); color:var(--warm)} .tag.amb::before{background:var(--warm)}
+.tag.cy{background:rgba(99,230,206,.12); color:var(--cyan)} .tag.cy::before{background:var(--cyan)}
+.trend{display:flex; align-items:flex-end; gap:14px; height:150px; padding:8px 4px 0}
+.bar{flex:1; border-radius:8px 8px 4px 4px; background:linear-gradient(180deg,var(--acid),rgba(166,226,46,.35)); position:relative; box-shadow:0 0 16px rgba(200,251,79,.15)}
+.bar span{position:absolute; top:-22px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--ink2)}
+.bar small{position:absolute; bottom:-22px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:10px; color:var(--muted)}
+.bar:last-child{background:linear-gradient(180deg,var(--cyan),rgba(99,230,206,.3)); box-shadow:0 0 16px rgba(99,230,206,.2)}
+/* board */
+.board{display:grid; grid-template-columns:264px 1fr 332px; gap:16px; height:calc(100vh - 158px); min-height:600px}
+.panel{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); display:flex; flex-direction:column; overflow:hidden}
+.panel-h{padding:15px 16px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between}
+.panel-h b{font-family:var(--font-display); font-weight:700; font-size:15px}
+.panel-b{padding:14px; overflow:auto; flex:1}
+.seg{display:flex; gap:4px; background:var(--bg2); padding:3px; border-radius:9px; margin-bottom:12px; border:1px solid var(--line)}
+.seg button{flex:1; font-family:var(--font-mono); font-size:11px; border:0; background:transparent; color:var(--muted); padding:6px; border-radius:7px; cursor:pointer; font-weight:700}
+.seg button.on{background:var(--acid); color:#10130a}
+.asset{display:flex; gap:11px; padding:9px; border:1px solid var(--line); border-radius:13px; margin-bottom:9px; background:var(--bg2); cursor:pointer; transition:.15s}
+.asset:hover{border-color:var(--acid); box-shadow:0 0 0 1px var(--acid-soft)}
+.asset .thumb{width:54px; height:54px; border-radius:10px; flex:none; border:1px solid var(--line2)}
+.asset b{font-size:12.5px; display:block; margin-bottom:3px}
+.asset small{font-family:var(--font-mono); font-size:10px; color:var(--muted)}
+.canvas-wrap{position:relative; background-color:#0C0E13; background-image:linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size:26px 26px}
+.canvas-bar{position:absolute; top:14px; left:14px; right:14px; display:flex; align-items:center; gap:10px; z-index:4}
+.crumb{background:var(--panel); border:1px solid var(--line2); border-radius:11px; padding:8px 14px; box-shadow:var(--sh); font-family:var(--font-display); font-weight:700; font-size:14px; display:flex; align-items:center; gap:10px}
+.node{position:absolute; width:150px; background:var(--panel2); border:1.5px solid var(--line2); border-radius:14px; box-shadow:var(--sh); padding:11px; z-index:2}
+.node .nt{font-family:var(--font-mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:6px; margin-bottom:8px}
+.node .nt::before{content:""; width:7px; height:7px; border-radius:2px}
+.node.in .nt::before{background:var(--cyan); box-shadow:0 0 6px var(--cyan)} .node.pr .nt::before{background:var(--acid); box-shadow:0 0 6px var(--acid)}
+.node.out .nt::before{background:var(--acid-d)} .node.fb .nt::before{background:var(--warm)}
+.node .pic{height:64px; border-radius:8px; border:1px solid var(--line); margin-bottom:7px}
+.node .txt{font-size:11.5px; color:var(--ink2); line-height:1.45}
+.node.in{left:30px} .node.in.a{top:84px} .node.in.b{top:250px}
+.node.pr{left:248px; top:150px; width:208px; border-color:var(--acid); box-shadow:var(--glow)}
+.node.out{left:512px; top:96px; width:158px}
+.node.fb{left:266px; top:392px; width:196px; background:var(--warm-soft); border-color:rgba(255,122,77,.4)}
+.node .selbadge{position:absolute; top:-10px; right:-8px; background:var(--acid); color:#10130a; font-family:var(--font-mono); font-size:9px; padding:2px 7px; border-radius:6px; font-weight:700; box-shadow:0 0 12px rgba(200,251,79,.5)}
+svg.wires{position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none}
+.note{background:var(--acid-soft); border:1px solid rgba(200,251,79,.3); border-radius:13px; padding:12px 13px; font-size:12px; color:#d6f59a; line-height:1.55; margin-bottom:12px}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px}
+.chip{font-family:var(--font-mono); font-size:11px; border:1px solid var(--line2); background:var(--bg2); border-radius:9px; padding:7px 10px; cursor:pointer; color:var(--ink2)}
+.chip:hover{border-color:var(--acid); color:var(--acid)}
+.bubble{padding:11px 13px; border-radius:14px; font-size:12.5px; line-height:1.55; margin-bottom:9px; max-width:92%}
+.bubble.u{background:var(--acid); color:#10130a; margin-left:auto; border-bottom-right-radius:5px; font-weight:600}
+.bubble.a{background:var(--bg2); border:1px solid var(--line); border-bottom-left-radius:5px}
+.composer{margin-top:auto; padding:12px 14px; border-top:1px solid var(--line)}
+.composer .box{border:1px solid var(--line2); border-radius:12px; padding:10px 12px; font-size:12.5px; color:var(--muted); min-height:64px; background:var(--bg2)}
+.composer .row{display:flex; gap:8px; margin-top:9px}
+.composer .btn{flex:1; justify-content:center; padding:9px}
+@media(max-width:1100px){.app{grid-template-columns:1fr}.side{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mark"></div><div><b>bebehaha</b><span>Design Studio</span></div></div>
+    <div class="nav-label">工作区</div>
+    <nav class="nav">
+      <a class="on" onclick="go('dash',this)"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>工作台</a>
+      <a onclick="go('board',this)"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>全部项目<span class="badge">12</span></a>
+      <a onclick="go('board',this)"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>项目画板</a>
+      <a><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l5-6 4 4 3-4 4 6"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>团队素材库</a>
+    </nav>
+    <div class="nav-label">管理</div>
+    <nav class="nav">
+      <a><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 11a3 3 0 100-6"/></svg>成员管理</a>
+      <a><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 10h20M6 15h4"/></svg>账户用量</a>
+    </nav>
+    <div class="foot"><div class="avatar">曹</div><div><b style="font-size:13px">曹总</b><small>管理员 · 老板视角</small></div></div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="pagetabs"><button class="on" onclick="go('dash')">工作台首页</button><button onclick="go('board')">项目画板</button></div>
+      <div class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg><input placeholder="搜索项目、素材、Prompt…"></div>
+      <div class="role-pill"><button class="on">老板视角</button><button>员工视角</button></div>
+    </header>
+
+    <div class="content">
+      <!-- DASHBOARD -->
+      <section id="dash" class="page on">
+        <div class="head"><div><h1>工作台首页</h1><p>团队设计 AI 的整体使用情况 · 首页不展示费用金额</p></div><button class="btn pri">查看全部项目 →</button></div>
+        <div class="grid4">
+          <div class="metric"><div class="k"><span class="dot"></span>进行中项目</div><div class="v">12</div><div class="t"><b>+3</b> 本周新增</div></div>
+          <div class="metric wm"><div class="k"><span class="dot"></span>已归档项目</div><div class="v">36</div><div class="t">可追溯历史设计过程</div></div>
+          <div class="metric cy"><div class="k"><span class="dot"></span>本月生成次数</div><div class="v">428</div><div class="t"><b>+18%</b> 环比上月</div></div>
+          <div class="metric"><div class="k"><span class="dot"></span>活跃设计师</div><div class="v">3</div><div class="t">近 7 天均有使用</div></div>
+        </div>
+        <div class="cols">
+          <div class="card">
+            <div class="card-h"><h3>最近项目</h3><a href="#">全部 →</a></div>
+            <table>
+              <thead><tr><th>项目</th><th>负责人</th><th>状态</th><th>生成</th><th>更新</th></tr></thead>
+              <tbody>
+                <tr><td><b>儿童保温杯详情页</b></td><td><div class="who"><span class="av" style="background:var(--cyan)">远</span>远弘</div></td><td><span class="tag grn">进行中</span></td><td class="num">28</td><td style="color:var(--muted)">今天 15:20</td></tr>
+                <tr><td><b>新品场景图探索</b></td><td><div class="who"><span class="av" style="background:var(--acid)">A</span>设计师A</div></td><td><span class="tag grn">进行中</span></td><td class="num">33</td><td style="color:var(--muted)">昨天</td></tr>
+                <tr><td><b>夏季营销海报</b></td><td><div class="who"><span class="av" style="background:var(--warm)">B</span>设计师B</div></td><td><span class="tag amb">已归档</span></td><td class="num">15</td><td style="color:var(--muted)">3 天前</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <div class="card-h"><h3>成员活跃</h3><a href="#">详情 →</a></div>
+            <table>
+              <thead><tr><th>成员</th><th>本月</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr><td><div class="who"><span class="av" style="background:var(--cyan)">远</span>远弘</div></td><td class="num">128</td><td><span class="tag grn">活跃</span></td></tr>
+                <tr><td><div class="who"><span class="av" style="background:var(--acid)">A</span>设计师A</div></td><td class="num">89</td><td><span class="tag grn">活跃</span></td></tr>
+                <tr><td><div class="who"><span class="av" style="background:var(--warm)">B</span>设计师B</div></td><td class="num">44</td><td><span class="tag cy">低活跃</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <div class="card-h"><h3>最近 7 天生成趋势</h3><a href="#">428 次 / 本周</a></div>
+          <div style="padding:30px 24px 34px">
+            <div class="trend">
+              <div class="bar" style="height:46%"><span>42</span><small>周一</small></div>
+              <div class="bar" style="height:60%"><span>58</span><small>周二</small></div>
+              <div class="bar" style="height:48%"><span>45</span><small>周三</small></div>
+              <div class="bar" style="height:74%"><span>72</span><small>周四</small></div>
+              <div class="bar" style="height:68%"><span>66</span><small>周五</small></div>
+              <div class="bar" style="height:90%"><span>88</span><small>周六</small></div>
+              <div class="bar" style="height:76%"><span>74</span><small>周日</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOARD -->
+      <section id="board" class="page">
+        <div class="head">
+          <div><h1 style="display:flex; align-items:center; gap:12px">儿童保温杯详情页 <span class="tag grn" style="font-size:12px">进行中</span></h1><p>负责人 远弘 · 协作 设计师A、设计师B · 多张 Input 图 → Prompt 融合 → Output 结果</p></div>
+          <div style="display:flex; gap:10px"><button class="btn">下载素材</button><button class="btn">归档项目</button><button class="btn pri">＋ 新增节点</button></div>
+        </div>
+        <div class="board">
+          <div class="panel">
+            <div class="panel-h"><b>项目素材</b><button class="btn" style="padding:6px 11px; font-size:12px">上传</button></div>
+            <div class="panel-b">
+              <div class="seg"><button class="on">全部</button><button>Input</button><button>Output</button></div>
+              <div class="asset"><div class="thumb" style="background:linear-gradient(135deg,#1d3b3a,#2a3d1e)"></div><div><b>产品参考图</b><small>INPUT · 远弘 · 今天</small></div></div>
+              <div class="asset"><div class="thumb" style="background:linear-gradient(135deg,#2a3d1e,#3a3320)"></div><div><b>厨房场景图 V1</b><small>OUTPUT · Seedream</small></div></div>
+              <div class="asset"><div class="thumb" style="background:linear-gradient(135deg,#3a2a1e,#3a3320)"></div><div><b>主图优化 V2</b><small>OUTPUT · GPT Image</small></div></div>
+              <div class="asset"><div class="thumb" style="background:linear-gradient(135deg,#1d2b3b,#1d3b3a)"></div><div><b>杯身细节图</b><small>INPUT · 设计师A</small></div></div>
+            </div>
+          </div>
+          <div class="panel canvas-wrap">
+            <div class="canvas-bar">
+              <div class="crumb"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acid)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>画布工作流</div>
+              <button class="btn" style="padding:8px 12px; font-size:12px">自动整理</button>
+            </div>
+            <svg class="wires">
+              <path d="M180 116 C 230 116, 210 230, 248 240" fill="none" stroke="rgba(99,230,206,.5)" stroke-width="2"/>
+              <path d="M180 280 C 230 280, 215 250, 248 250" fill="none" stroke="rgba(99,230,206,.5)" stroke-width="2"/>
+              <path d="M456 240 C 500 230, 480 150, 512 150" fill="none" stroke="rgba(200,251,79,.6)" stroke-width="2"/>
+              <path d="M360 392 C 330 350, 360 300, 380 270" fill="none" stroke="rgba(255,122,77,.5)" stroke-width="2" stroke-dasharray="5 5"/>
+            </svg>
+            <div class="node in a"><div class="nt">Input · 产品</div><div class="pic" style="background:linear-gradient(135deg,#1d3b3a,#2a3d1e)"></div><div class="txt">产品白底图</div></div>
+            <div class="node in b"><div class="nt">Input · 场景</div><div class="pic" style="background:linear-gradient(135deg,#2a3d1e,#3a3320)"></div><div class="txt">厨房场景参考</div></div>
+            <div class="node pr"><span class="selbadge">已选中</span><div class="nt">Prompt 节点</div><div class="txt">融合产品白底图与厨房场景，生成明亮、干净、安全感的儿童保温杯电商详情图。</div></div>
+            <div class="node out"><div class="nt">Output · V1</div><div class="pic" style="background:linear-gradient(135deg,#2a3d1e,#3a3320)"></div><div class="txt">融合生成结果</div></div>
+            <div class="node fb"><div class="nt">反馈 · 备注</div><div class="txt">减少背景杂物，突出杯身材质 → 再生成 V2</div></div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><b>AI 设计助手</b><span class="tag grn" style="font-size:10px">选中 Prompt</span></div>
+            <div class="panel-b" style="display:flex; flex-direction:column; padding-bottom:0">
+              <div class="note">当前上下文：已选择 <b>Prompt 节点</b>，正融合 2 张 Input 图。对话将持续优化这个节点。</div>
+              <div class="chips"><span class="chip">优化当前 Prompt</span><span class="chip">整合多图意图</span><span class="chip">按当前 Prompt 再生成</span></div>
+              <div class="bubble u">三张参考图融合后，产品主体不够突出，背景有点杂。</div>
+              <div class="bubble a">建议在原 Prompt 上：保留杯身比例，减少厨房背景物件，沿用品牌暖色调。可应用后直接再生成 V2。</div>
+            </div>
+            <div class="composer">
+              <div class="box">描述你对当前 Prompt 节点的修改要求…</div>
+              <div class="row"><button class="btn">优化 Prompt</button><button class="btn acc">⚡ 再生成</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+function go(id, el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on', p.id===id));
+  document.querySelectorAll('.pagetabs button').forEach((b,i)=>b.classList.toggle('on', (id==='dash')===(i===0)));
+  if(el && el.closest('.nav')){document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('on')); el.classList.add('on');}
+}
+</script>
+</body>
+</html>
